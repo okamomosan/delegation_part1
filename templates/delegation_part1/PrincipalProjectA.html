@@ -1,0 +1,11 @@
+{% load otree %}
+
+<div class="card bg-light AgentProjectA">
+<div class="card-body">
+    <p>
+         <strong><u>プロジェクトA</u></strong><br>
+
+        成功した場合：あなたは{{ subsession.principal_when_success_a }}ポイント。参加者Bは{{ subsession.agent_when_success_a }}ポイント<br>
+        失敗した場合：あなたと参加者Bはともに{{ subsession.when_fail_a }}ポイント。</p>
+</div>
+</div>

@@ -1,0 +1,165 @@
+{% extends "otree/Page.html" %}
+{% load otree %}
+
+{% block head_title %}
+第{{ subsession.round_number }}ラウンド
+{% endblock %}
+
+{% block global_styles  %}
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c:wght@300&display=swap');
+
+    body {
+        font-family: 'Kosugi Maru', sans-serif;
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+    }
+
+    .yellow {
+        background-color: #F2EF5C;
+        padding-left: 5px;
+        padding-right: 5px;
+        font-weight: 700;
+    }
+
+    .blue {
+        color: #4993EC;
+    }
+
+    .orange {
+        color: #E66236;
+    }
+
+    .red {
+        color: red;
+        font-size: 1.3em;
+    }
+
+    .white {
+        color: white;
+    }
+
+    .title_blue {
+        color: #F7FEDC;
+        font-weight: 900;
+    }
+
+    .form-check {
+        padding: 10px;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    li {
+        padding: 25px;
+    }
+
+    .flex {
+        display: flex;
+        justify-content: center;
+    }
+
+    .tiny {
+        font-size: medium;
+        padding-top: 5px;
+        font-weight: 400;
+    }
+
+
+
+    .btn_small {
+        background-color: #BFD6E6;
+        display: inline-block;
+        border: none;
+        box-shadow: 2px 2px 4px gray;
+        border-radius: 6px;
+        text-align: center;
+        padding: 20px;
+    }
+</style>
+
+{% if subsession.cost_blue %}
+<style>
+    body {
+        background-color: #C2DDE6;
+        /*  #AEE1F9;*/
+    }
+
+    .var_headline {
+        color: #4993EC;
+    }
+
+    .var_text {
+        color: #e69436;
+    }
+
+    .var_title {
+        color: #F7FEDC;
+        font-weight: 900;
+    }
+
+    .var_btn {
+        background-color: white;
+        display: inline-block;
+        border: none;
+        box-shadow: 2px 2px 4px gray;
+        border-radius: 6px;
+        text-align: center;
+        padding: 35px;
+    }
+
+    .var_btn:hover {
+        background-color: #AAD4E9;
+        border-radius: 5px;
+    }
+</style>
+
+{% else %}
+
+<style>
+    body {
+        background-color: #FFF8D9;
+    }
+
+    .var_title {
+        color: #9FCBDB;
+        font-weight: 900;
+    }
+
+    .var_headline {
+        color: #e69436;
+    }
+
+    .var_text {
+        color: #4993EC;
+    }
+
+    .title_var_color {
+        color: #9FCBDB;
+        font-weight: 900;
+    }
+
+    .var_btn {
+        background-color: white;
+        display: inline-block;
+        border: none;
+        box-shadow: 2px 2px 4px gray;
+        border-radius: 6px;
+        text-align: center;
+        padding: 35px;
+    }
+
+    .var_btn:hover {
+        background-color: #FFE895;
+        border-radius: 5px;
+    }
+</style>
+
+{% endif %}
+
+{% endblock %}
+
+{% block global_scripts  %}
+{% endblock %}

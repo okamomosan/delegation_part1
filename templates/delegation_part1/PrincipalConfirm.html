@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド
+{% endblock %}
+
+{% block content %}
+
+     <strong>このラウンドの結果は以下のどちらかになります。</strong><br><br>
+        あなたの選んだ最小要件は<strong>{{ group.principal_minimum_requirement }}</strong>なので、
+        参加者Bの選んだ成功確率が<u>{{ group.principal_minimum_requirement_minus1}}以下なら①</u>が実現し、
+        <u>{{ group.principal_minimum_requirement}}以上なら②</u>が実現します。<br><br>
+
+        {% if group.principal_project_choice == 1 %}{% include 'delegation_part1/PrincipalConfirmA.html' %}
+        {% else %}{% include 'delegation_part1/PrincipalConfirmA.html' %}
+        {% endif %}<br>
+        {% include 'delegation_part1/PrincipalConfirmB.html' %}<br>
+
+
+        これで良ければ「次へ」を押してください。<br>
+    注意：「戻る」を押せば何度でも入力をやり直せますが、「次へ」を押すと今後変更はできません。<br><br>
+
+        <button class="btn btn-danger" name="back3" value="3">プロジェクトの選択に戻る</button>&nbsp;&nbsp;
+        <button class="btn btn-danger" name="back2" value="2">成功確率の選択に戻る</button>&nbsp;&nbsp;
+        <button class="btn btn-danger" name="back1" value="1">最小要件の選択に戻る</button><br><br>
+
+
+    {% next_button %}
+
+
+
+{% endblock %}

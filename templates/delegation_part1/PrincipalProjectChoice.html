@@ -1,0 +1,37 @@
+{% extends "delegation_part1/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド
+{% endblock %}
+
+{% block content %}
+
+<strong>プロジェクトの選択</strong><br>
+
+このラウンドで、各プロジェクトから得られるポイント<br><br>
+
+{% include 'delegation_part1/PrincipalProjectA.html' %}
+<br>
+{% include 'delegation_part1/PrincipalProjectB.html' %}
+<br>
+
+このラウンドのコストは
+{% if subsession.cost_blue %}
+<span class="blue">青色</span>
+{% else %}
+<span class="yellow">黄色</span>
+{% endif %}
+のシートに記載されています。<br><br>
+
+もし、あなたがこのラウンドの決定権を持つことになった場合、ここで選択したプロジェクトが実行されます。<br>
+(どちらが決定権を持つかは、この時点ではまだわかりません）<br><br>
+
+{% formfield group.principal_project_choice label="あなたが実行したいプログラムは..." %}
+
+
+{% next_button %}
+
+
+
+{% endblock %}

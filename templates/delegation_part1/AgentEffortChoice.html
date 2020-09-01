@@ -1,0 +1,51 @@
+{% extends "delegation_part1/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+
+<h1 class="var_title">第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド
+</h1>
+
+
+
+
+<br>
+<h6>あなたに決定権が渡された場合、あなたが次のプロジェクトの成功確率を決めます。</h6><br>
+
+<div class="card bg-light" name="agent_project_choice" value="1">
+    <div class="card-body">
+        {% if group.agent_project_choice == 1 %} {% include 'delegation_part1/AgentProjectA.html' %}
+        {% else %} {% include 'delegation_part1/AgentProjectB.html' %}
+        {% endif %}
+    </div>
+</div>
+
+<br>
+
+成功確率を決めてください。<span class="tiny">（コスト表は
+    {% if subsession.cost_blue %}
+    <span class="blue">青</span>）
+    {% else %}
+    <span class="yellow">黄</span>）
+    {% endif %}
+</span><br><br>
+
+{% if subsession.cost_blue %}
+<input type="range" id="a" name="agent_effort_choice" value="50" min="0" max="100" step="1" oninput="document.getElementById('output1').value=this.value,
+    document.getElementById('output2').value=(0.02*this.value**2)">
+{% else %}
+<input type="range" id="a" name="agent_effort_choice" value="50" min="0" max="100" step="1" oninput="document.getElementById('output1').value=this.value,
+    document.getElementById('output2').value=(0.01*this.value**2)">
+{% endif %}
+
+<!-- 0.01や0.02はConstantsのK[0]のこと。K[]をいじる場合はここも変更 -->
+<!-- todo 成功確率が10未満の時は計算ルールが変わるので間違ってる！ -->
+&nbsp;
+<output id="output1">50</output>&nbsp;（必要なコスト：<output id="output2" for="a">50</output>）
+<br><br>
+
+{% next_button %}
+
+
+{% endblock %}

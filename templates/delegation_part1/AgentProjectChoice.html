@@ -1,0 +1,38 @@
+{% extends "delegation_part1/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+
+<h1 class="var_title">第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド</h1>
+
+
+<br>
+<h5>どちらを選びますか？
+   <span class="tiny">（コスト表は
+      {% if subsession.cost_blue %}
+      <span class="blue">青</span>）
+      {% else %}
+      <span class="yellow">黄</span>）
+      {% endif %}
+</h5>
+
+<ul class="flex">
+   <li><button class="var_btn" name="agent_project_choice" value="1">
+         <h4 class="var_headline">プロジェクトA</h4>
+         <hr>
+         <div> {% include 'delegation_part1/AgentProjectA.html'%}
+
+         </div>
+      </button></li>
+   <li><button class="var_btn" name="agent_project_choice" value="2">
+         <h4 class="var_headline">プロジェクトB</h4>
+         <hr>
+         <div>
+            {% include 'delegation_part1/AgentProjectB.html'%}
+
+         </div>
+      </button></li>
+</ul>
+<p>あなたがこのラウンドの決定権を持つことになった場合、ここで選択したプロジェクトが実行されます。</p>
+{% endblock %}

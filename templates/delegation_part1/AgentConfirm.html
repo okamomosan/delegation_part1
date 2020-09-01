@@ -1,0 +1,37 @@
+{% extends "delegation_part1//Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<h1 class="var_title">第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド</h1>
+<br>
+<h5>以下の内容で良ければ「次へ」をクリック。</h5><br>
+選んだ成功確率：<strong class="red">{{ group.agent_effort_choice }}％</strong> <br>
+
+必要なコスト：{% if subsession.cost_blue %} <strong class="red">{{ agent_cost_blue }}</strong>
+{% else %} <strong class="red">{{ agent_cost_yellow }}ポイント</strong>{% endif %} <br>
+
+選んだプロジェクト：
+{% if group.agent_project_choice == 1 %}<strong class="red">A</strong><br><br>
+<div class="card bg-light">
+    <div class="card-body">
+        {% include 'delegation_part1/AgentProjectA.html' %}
+    </div>
+</div>
+{% else %}<strong class="red">B</strong><br><br>
+<div class="card bg-light">
+    <div class="card-body">
+        {% include 'delegation_part1/AgentProjectB.html' %}
+    </div>
+</div>
+{% endif %}<br>
+
+<button class="btn btn-outline-info" name="back2" value="2">プロジェクトの選択に戻る</button>&nbsp;&nbsp;
+<button class="btn btn-outline-info" name="back1" value="1">成功確率の選択に戻る</button><br><br>
+
+
+{% next_button %}
+
+
+
+{% endblock %}

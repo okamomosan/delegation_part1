@@ -1,0 +1,34 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド
+{% endblock %}
+
+{% block content %}
+
+     <strong>成功確率の選択</strong><br>
+
+        あなたが決定権が持ち続ける場合、次のプロジェクトが実行されます。<br><br>
+
+      {% if group.principal_project_choice == 1 %} {% include 'delegation_part1/PrincipalProjectA.html' %}
+      {% else %} {% include 'delegation_part1/PrincipalProjectB.html' %}
+      {% endif %}
+
+    <br>
+
+        もし、あなたがこのラウンドの決定権を持ち続けることになった場合、あなたが上記のプロジェクトの成功確率を決めます。<br>
+        (どちらが決定権を持つかは、この時点ではまだわかりません）<br><br>
+
+        このラウンドのコストは{% if subsession.cost_blue %} <strong>青色</strong>{% else %} <strong>黄色</strong>{% endif %}
+    のシートに記載されています。<br>
+        このプロジェクトの成功確率を決めてください。<br><br>
+
+    {% formfield group.principal_effort_choice label="成功確率" %}
+    （０〜１００の整数を入力してください）<br><br>
+
+
+    {% next_button %}
+
+
+{% endblock %}
