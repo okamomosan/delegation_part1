@@ -1,27 +1,38 @@
-{% extends "global/Page.html" %}
+{% extends "delegation_part1/Page.html" %}
 {% load otree static %}
 
-{% block title %}
+{% block head_title %}
 第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド終了
 {% endblock %}
 
 {% block content %}
 
-<p>
+
+<div align="center">
+    <h1 class="var_title">
+        第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド終了</h1>
     <br>
-    {% if subsession.round_number < 10 %}
-    第{{ subsession.round_number }} ラウンドが終了しました。<br>
-    次のラウンドに進みます。
-    <!-- 次のラウンドでは、もう一度ランダムに他グループの誰かとペアになります。 -->
-    <br><br>
 
-    {% else %}
-    おつかれさまでした。これで実験パート１は終了です。<br><br>
-    「次へ」をクリックしてしばらくお待ちください。<br>
-    すべての参加者の意思決定が終わり次第、実験パート２に進みます。<br><br>
-    {% endif %}
-</p>
+    <div class="card bg-light instructions" align="center"
+        style="height:150px;width:410px; overflow:auto; padding:5px; box-shadow: 2px 2px 4px gray;">
+        <div class=" card-body">
+            <p>
+            <p>
+                {% if subsession.round_number < 10 %}
+            <p>第{{ subsession.round_number }} ラウンドが終了しました。</p>
+            <p>次のラウンドに進みます。</p>
+            <!-- 次のラウンドでは、もう一度ランダムに他グループの誰かとペアになります。 -->
+            <br>
 
-<button class="btn btn-primary" name="round_index" value="{{ subsession.round_index　}}">次へ</button>
-
+            {% else %}
+            <p>おつかれさまでした。実験パート１は終了です。</p>
+            <p>実験パート２に進みます。</p><br>
+            {% endif %}
+            </p>
+            </p>
+        </div>
+    </div>
+    <br>
+    <button class="btn btn-primary" name="round_index" value="{{ subsession.round_index　}}">次へ</button>
+</div>
 {% endblock %}

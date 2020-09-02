@@ -1,0 +1,29 @@
+{% extends "delegation_part1/Page.html" %}
+{% load otree static %}
+
+{% block head_title %}
+実験パート１へようこそ
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #C2DDE6;
+    }
+</style>
+
+<div align="center">
+    <h1 class="title_blue">実験パート１</h1>
+    <br>
+
+    <div class="card bg-light instructions" align="center"
+        style="height:150px;width:410px; overflow:auto; padding:14px; box-shadow: 2px 2px 4px gray;">
+        <div class=" card-body">
+            <p>このパートは全部で１０ラウンドあります。</p>
+            <p>各ラウンドの制限時間は３分です。</p>
+        </div>
+    </div>
+    <br>
+    {% next_button %}
+</div>
+{% endblock %}

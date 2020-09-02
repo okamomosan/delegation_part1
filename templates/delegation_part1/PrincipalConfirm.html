@@ -1,32 +1,84 @@
-{% extends "global/Page.html" %}
+{% extends "delegation_part1/Page.html" %}
 {% load otree static %}
 
-{% block title %}
-    第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド
+{% block head_title %}
+第{{ subsession.round_number }}ラウンド
 {% endblock %}
+
 
 {% block content %}
 
-     <strong>このラウンドの結果は以下のどちらかになります。</strong><br><br>
-        あなたの選んだ最小要件は<strong>{{ group.principal_minimum_requirement }}</strong>なので、
-        参加者Bの選んだ成功確率が<u>{{ group.principal_minimum_requirement_minus1}}以下なら①</u>が実現し、
-        <u>{{ group.principal_minimum_requirement}}以上なら②</u>が実現します。<br><br>
+<h1 class="var_title">第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド</h1>
+<br>
+<h5>以下の内容で良ければ「次へ」をクリック。</h5>
+<p>あなたの選んだ最小要件は<span class="red_em" style="padding:5px;">{{ group.principal_minimum_requirement }}</span>
+    なので、このラウンドの結果は以下のどちらかになります。</p>
 
-        {% if group.principal_project_choice == 1 %}{% include 'delegation_part1/PrincipalConfirmA.html' %}
-        {% else %}{% include 'delegation_part1/PrincipalConfirmA.html' %}
-        {% endif %}<br>
-        {% include 'delegation_part1/PrincipalConfirmB.html' %}<br>
+<ul class="flex">
+    <li>
+        <div class="var_btn_wo_hover" style="width:410px;">
+            <h5 class="var_headline">相手の選んだ成功確率：{{ group.principal_minimum_requirement_minus1}}以下</h5>
+            <hr>
+            <div align="left">
+                <span class="var_text">決定権：</span>あなた<br>
+                <br>
+                {% if group.principal_project_choice == 1 %}
+                <span class="var_text">成功した場合：</span><br>
+                あなたは{{ subsession.principal_when_success_a }}ポイント<br>
+                相手は{{ subsession.agent_when_success_a }}ポイント<br>
+                <br>
+                <span class="var_text">失敗した場合：</span><br>
+                あなたと相手はともに{{ subsession.when_fail_a }}ポイント<br>
+                {% else %}
+                <span class="var_text">成功した場合：</span><br>
+                あなたは{{ subsession.principal_when_success_b }}ポイント<br>
+                相手は{{ subsession.agent_when_success_b }}ポイント<br>
+                <span class="var_text">失敗した場合：</span><br>
+                あなたと相手はともに{{ subsession.when_fail_b }}ポイント<br>
+                {% endif %}<br>
+                <span class="var_text">成功確率：</span>{{ group.principal_effort_choice }} ％ <br>
+
+                <span class="var_text">必要なコスト：</span>
+                {% if subsession.cost_blue %}
+                {{ principal_cost_blue }}
+                {% else %}
+                {{ principal_cost_yellow }}
+                {% endif %} ポイント<br>
+                </p>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="var_btn_wo_hover" style="width:410px;">
+            <h5 class=" var_headline">相手の選んだ成功確率：{{ group.principal_minimum_requirement}}以上</h5>
+            <hr>
+            <div align="left">
+                <span class="var_text">決定権：</span>相手<span class="small">（以下プロジェクトBを選ぶと仮定）</span><br>
+                <br>
+                <span class="var_text">成功した場合：</span><br>
+                あなたは{{ subsession.principal_when_success_b }}ポイント<br>
+                相手は{{ subsession.agent_when_success_b }}ポイント<br>
+                <br>
+                <span class="var_text">失敗した場合：</span><br>
+                あなたと相手はともに{{ subsession.when_fail_b }}ポイント<br>
+                <br>
+                ※ 最小要件が{{ group.principal_minimum_requirement }}なので、
+                相手は最低でも{% if subsession.cost_blue %}{{ minimum_cost_blue }}
+                {% else %}{{ minimum_cost_yellow }}{% endif %} のコストを払う
+                </p>
+            </div>
 
 
-        これで良ければ「次へ」を押してください。<br>
-    注意：「戻る」を押せば何度でも入力をやり直せますが、「次へ」を押すと今後変更はできません。<br><br>
+        </div>
+    </li>
+</ul>
 
-        <button class="btn btn-danger" name="back3" value="3">プロジェクトの選択に戻る</button>&nbsp;&nbsp;
-        <button class="btn btn-danger" name="back2" value="2">成功確率の選択に戻る</button>&nbsp;&nbsp;
-        <button class="btn btn-danger" name="back1" value="1">最小要件の選択に戻る</button><br><br>
+<button class="btn btn-outline-info" name="back3" value="3">プロジェクトの選択に戻る</button>&nbsp;&nbsp;
+<button class="btn btn-outline-info" name="back2" value="2">成功確率の選択に戻る</button>&nbsp;&nbsp;
+<button class="btn btn-outline-info" name="back1" value="1">最小要件の選択に戻る</button><br><br>
 
 
-    {% next_button %}
+{% next_button %}
 
 
 

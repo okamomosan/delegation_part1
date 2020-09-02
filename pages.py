@@ -1,12 +1,27 @@
 from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants
+import time
+
+
+class Start(Page):
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+    def before_next_page(self):
+        # user has 3 minutes to complete as many pages as possible
+        self.participant.vars['expiry'] = time.time() + 3*60
 
 
 class AgentProjectChoice(Page):
 
     form_model = "group"
     form_fields = ["agent_project_choice"]
+    timer_text = ''
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['expiry'] - time.time()
 
     def is_displayed(self):
         return self.player.id_in_group == 2
@@ -15,12 +30,20 @@ class AgentProjectChoice(Page):
 class AgentEffortChoice(Page):
     form_model = "group"
     form_fields = ["agent_effort_choice"]
+    timer_text = ''
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['expiry'] - time.time()
 
     def is_displayed(self):
         return self.player.id_in_group == 2
 
 
 class AgentConfirm(Page):
+    timer_text = ''
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['expiry'] - time.time()
 
     def is_displayed(self):
         return self.player.id_in_group == 2
@@ -58,6 +81,10 @@ class PrincipalProjectChoice(Page):
 
     form_model = "group"
     form_fields = ["principal_project_choice"]
+    timer_text = ''
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['expiry'] - time.time()
 
     def is_displayed(self):
         return self.player.id_in_group == 1
@@ -66,6 +93,10 @@ class PrincipalProjectChoice(Page):
 class PrincipalEffortChoice(Page):
     form_model = "group"
     form_fields = ["principal_effort_choice"]
+    timer_text = ''
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['expiry'] - time.time()
 
     def is_displayed(self):
         return self.player.id_in_group == 1
@@ -74,12 +105,21 @@ class PrincipalEffortChoice(Page):
 class PrincipalMiniReq(Page):
     form_model = "group"
     form_fields = ["principal_minimum_requirement"]
+    timer_text = ''
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['expiry'] - time.time()
 
     def is_displayed(self):
         return self.player.id_in_group == 1
 
 
 class PrincipalConfirm(Page):
+    timer_text = ''
+
+    def get_timeout_seconds(self):
+        return self.participant.vars['expiry'] - time.time()
+
     def is_displayed(self):
         return self.player.id_in_group == 1
 
@@ -141,8 +181,13 @@ class GoNext(Page):
     form_model = "group"
     form_fields = ["round_index"]
 
+    def before_next_page(self):
+        # user has 3 minutes to complete as many pages as possible
+        self.participant.vars['expiry'] = time.time() + 3*60
+
 
 page_sequence = [
+    Start,
     AgentProjectChoice,
     AgentEffortChoice,
     AgentConfirm,
@@ -153,7 +198,7 @@ page_sequence = [
     PrincipalMiniReq,
     PrincipalConfirm,
     ResultsWaitPage,
-    GoNext
+    GoNext,
 
 
 ]

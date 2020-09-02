@@ -10,7 +10,18 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+Rounded+1c:wght@300&display=swap');
 
+    .otree-timer {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding-right: 30px;
+    }
+
     body {
+        background-color: #C2DDE6;
+        /*  #AEE1F9;*/
         font-family: 'Kosugi Maru', sans-serif;
         font-family: 'M PLUS Rounded 1c', sans-serif;
     }
@@ -94,14 +105,6 @@
         text-align: center;
         padding: 35px;
     }
-</style>
-
-{% if subsession.cost_blue %}
-<style>
-    body {
-        background-color: #C2DDE6;
-        /*  #AEE1F9;*/
-    }
 
     .var_headline {
         color: #4993EC;
@@ -130,6 +133,8 @@
         background-color: #AAD4E9;
     }
 </style>
+
+{% if subsession.cost_blue %}
 
 {% else %}
 
@@ -192,7 +197,7 @@
         /* バーの背景色 */
         border-radius: 10px;
         /* バーの両端の丸み */
-        border: solid 2px #dff1ff;
+        border: solid 1px #dff1ff;
         /* バー周囲の線 */
     }
 
