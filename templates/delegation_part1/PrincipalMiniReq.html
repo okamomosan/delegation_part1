@@ -1,35 +1,62 @@
-{% extends "global/Page.html" %}
+{% extends "delegation_part1/Page.html" %}
 {% load otree static %}
 
-{% block title %}
-    第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド
+{% block head_title %}
+第{{ subsession.round_number }}ラウンド
 {% endblock %}
 
 {% block content %}
 
-     <strong>最小要件の選択</strong><br>
+<h1 class="var_title">第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド</h1>
 
-          このラウンドで、各プロジェクトから得られるポイント<br><br>
-
-      {% include 'delegation_part1/PrincipalProjectA.html' %}
-    <br>
-      {% include 'delegation_part1/PrincipalProjectB.html' %}
-    <br>
-
-        このラウンドのコストは{% if subsession.cost_blue %} <strong>青色</strong>{% else %} <strong>黄色</strong>{% endif %}
-        のシートに記載されています。<br><br>
-
-        参加者Bは既にいずれかのプロジェクトと成功確率を選択しています。<br>
-        (参加者Bの選択は、この時点ではわかりません）<br><br>
-
-        以下の質問に答えることで、<strong>最小要件</strong>を決めてください。<br>
-        「あなたは参加者Bが選んだ成功確率がいくつ以上なら、決定権を渡したいですか？」<br><br>
-
-    {% formfield group.principal_minimum_requirement label="最小要件" %}
-    （０〜１００の整数を入力してください）<br><br>
+<br>
+<h5 class="bold"">相手が選んだ成功確率がいくつ以上なら、決定権を渡したいですか？</h5>
+<p class=" small">ペアの相手もプロジェクトと成功確率を選択中です。
+  上の質問に答え、相手に決定権を渡す<span class="red">最小要件</span>を決めてください。</p>
 
 
-    {% next_button %}
+
+  <ul class="flex">
+    <li>
+      <div class="var_btn_wo_hover">
+        <h4 class="var_headline">プロジェクトA</h4>
+        <hr>
+        <div> {% include 'delegation_part1/ProjectA.html' %}
+
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="var_btn_wo_hover">
+        <h4 class="var_headline">プロジェクトB</h4>
+        <hr>
+        <div>
+          {% include 'delegation_part1/ProjectB.html' %}
+        </div>
+      </div>
+    </li>
+  </ul>
 
 
-{% endblock %}
+
+  <p>最小要件を決めてください。
+    <span class="tiny">（コスト表は
+      {% if subsession.cost_blue %}
+      <span class="blue">青</span>）
+      {% else %}
+      <span class="yellow">黄</span>）
+      {% endif %}
+    </span>
+  </p>
+
+  <input type="range" id="a" name="principal_minimum_requirement" value="50" min="0" max="100" step="1" oninput="document.getElementById('output1').value=this.value,
+    document.getElementById('output2').value=this.value">
+
+  <span style="padding-left:10px;"></span><output id="output1">50</output>
+
+  <span style="padding-left:10px; padding-top:5px;">(相手の成功確率が<output id="output2">50</output>を超えれば決定権を渡す)</span>
+  <br><br>
+
+  {% next_button %}
+
+  {% endblock %}

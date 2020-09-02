@@ -15,21 +15,25 @@
 
 <div class="card bg-light" name="agent_project_choice" value="1">
     <div class="card-body">
-        {% if group.agent_project_choice == 1 %} {% include 'delegation_part1/AgentProjectA.html' %}
-        {% else %} {% include 'delegation_part1/AgentProjectB.html' %}
+        {% if group.agent_project_choice == 1 %}
+        {% include 'delegation_part1/ProjectA.html' %}
+        {% else %}
+        {% include 'delegation_part1/ProjectB.html' %}
         {% endif %}
     </div>
 </div>
 
 <br>
 
-成功確率を決めてください。<span class="tiny">（コスト表は
-    {% if subsession.cost_blue %}
-    <span class="blue">青</span>）
-    {% else %}
-    <span class="yellow">黄</span>）
-    {% endif %}
-</span><br><br>
+<p>成功確率を決めてください。
+    <span class="tiny">（コスト表は
+        {% if subsession.cost_blue %}
+        <span class="blue">青</span>）
+        {% else %}
+        <span class="yellow">黄</span>）
+        {% endif %}
+    </span>
+</p>
 
 {% if subsession.cost_blue %}
 <input type="range" id="a" name="agent_effort_choice" value="50" min="0" max="100" step="1" oninput="document.getElementById('output1').value=this.value,

@@ -1,0 +1,18 @@
+{% load otree %}
+
+<span class="var_text">成功した場合：</span><br>
+
+{% if player.id_in_group == 1 %}
+あなたは{{ subsession.principal_when_success_a }}ポイント<br>
+相手は{{ subsession.agent_when_success_a }}ポイント<br>
+
+{% else %}
+あなたは{{ subsession.agent_when_success_a }}ポイント<br>
+相手は{{ subsession.principal_when_success_a }}ポイント<br>
+
+{% endif %}
+
+
+<br>
+<span class="var_text">失敗した場合：</span><br>
+あなたと相手はともに{{ subsession.when_fail_a }}ポイント<br>

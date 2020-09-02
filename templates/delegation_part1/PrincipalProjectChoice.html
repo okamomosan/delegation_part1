@@ -1,37 +1,40 @@
 {% extends "delegation_part1/Page.html" %}
 {% load otree static %}
 
-{% block title %}
-第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド
+{% block head_title %}
+第{{ subsession.round_number }}ラウンド
 {% endblock %}
 
 {% block content %}
 
-<strong>プロジェクトの選択</strong><br>
+<h1 class="var_title">第{{ subsession.round_number }} / {{ Constants.num_rounds }}ラウンド</h1>
 
-このラウンドで、各プロジェクトから得られるポイント<br><br>
-
-{% include 'delegation_part1/PrincipalProjectA.html' %}
 <br>
-{% include 'delegation_part1/PrincipalProjectB.html' %}
-<br>
-
-このラウンドのコストは
-{% if subsession.cost_blue %}
-<span class="blue">青色</span>
-{% else %}
-<span class="yellow">黄色</span>
-{% endif %}
-のシートに記載されています。<br><br>
-
-もし、あなたがこのラウンドの決定権を持つことになった場合、ここで選択したプロジェクトが実行されます。<br>
-(どちらが決定権を持つかは、この時点ではまだわかりません）<br><br>
-
-{% formfield group.principal_project_choice label="あなたが実行したいプログラムは..." %}
+<h5>どちらを選びますか？
+    <span class="tiny">（コスト表は
+        {% if subsession.cost_blue %}
+        <span class="blue">青</span>）
+        {% else %}
+        <span class="yellow">黄</span>）
+        {% endif %}
+</h5>
 
 
-{% next_button %}
+<ul class="flex">
+    <li><button class="var_btn" name="principal_project_choice" value="1">
+            <h4 class="var_headline">プロジェクトA</h4>
+            <hr>
+            <div> {% include 'delegation_part1/ProjectA.html' %}
 
-
-
+            </div>
+        </button></li>
+    <li><button class="var_btn" name="principal_project_choice" value="2">
+            <h4 class="var_headline">プロジェクトB</h4>
+            <hr>
+            <div>
+                {% include 'delegation_part1/ProjectB.html' %}
+            </div>
+        </button></li>
+</ul>
+<p>あなたがこのラウンドの決定権を渡された場合、ここで選択したプロジェクトが実行されます。</p>
 {% endblock %}

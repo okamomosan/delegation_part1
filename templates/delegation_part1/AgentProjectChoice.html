@@ -21,18 +21,20 @@
    <li><button class="var_btn" name="agent_project_choice" value="1">
          <h4 class="var_headline">プロジェクトA</h4>
          <hr>
-         <div> {% include 'delegation_part1/AgentProjectA.html'%}
+         <div> {% include 'delegation_part1/ProjectA.html'%}
 
          </div>
-      </button></li>
+      </button>
+   </li>
    <li><button class="var_btn" name="agent_project_choice" value="2">
          <h4 class="var_headline">プロジェクトB</h4>
          <hr>
          <div>
-            {% include 'delegation_part1/AgentProjectB.html'%}
+            {% include 'delegation_part1/ProjectB.html'%}
 
          </div>
-      </button></li>
+      </button>
+   </li>
 </ul>
-<p>あなたがこのラウンドの決定権を持つことになった場合、ここで選択したプロジェクトが実行されます。</p>
+<p>あなたがこのラウンドの決定権を渡された場合、ここで選択したプロジェクトが実行されます。</p>
 {% endblock %}
