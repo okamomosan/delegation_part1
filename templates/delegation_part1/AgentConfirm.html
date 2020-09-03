@@ -11,8 +11,8 @@
 <br>
 <h5>以下の内容で良ければ「次へ」をクリック。</h5><br>
 <p>選んだ成功確率：<strong class="red_em">{{ group.agent_effort_choice }}％</strong><br>
-    必要なコスト：{% if subsession.cost_blue %} <strong class="red_em">{{ agent_cost_blue }}</strong>
-    {% else %} <strong class="red_em">{{ agent_cost_yellow }}ポイント</strong>{% endif %} <br>
+    必要なコスト：{% if subsession.cost_blue %} <strong class="red_em">{{ agent_cost_blue|floatformat }}</strong>
+    {% else %} <strong class="red_em">{{ agent_cost_yellow|floatformat }}ポイント</strong>{% endif %} <br>
     選んだプロジェクト：
     {% if group.agent_project_choice == 1 %}<strong class="red_em">A</strong></p><br>
 <div class="card bg-light">

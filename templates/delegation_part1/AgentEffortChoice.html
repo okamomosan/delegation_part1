@@ -40,10 +40,10 @@
 
 {% if subsession.cost_blue %}
 <input type="range" id="a" name="agent_effort_choice" value="50" min="0" max="100" step="1" oninput="document.getElementById('output1').value=this.value,
-    document.getElementById('output2').value=(0.02*this.value**2)">
+    document.getElementById('output2').value=(0.02*this.value**2).toFixed(1);  ">
 {% else %}
 <input type="range" id="a" name="agent_effort_choice" value="50" min="0" max="100" step="1" oninput="document.getElementById('output1').value=this.value,
-    document.getElementById('output2').value=(0.01*this.value**2)">
+    document.getElementById('output2').value=(0.01*this.value**2).toFixed(1);  ">
 {% endif %}
 
 <!-- 0.01や0.02はConstantsのK[0]のこと。K[]をいじる場合はここも変更 -->

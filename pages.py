@@ -174,7 +174,9 @@ class PrincipalConfirm(Page):
 
 
 class ResultsWaitPage(WaitPage):
-    pass
+    template_name = 'delegation_part1/ResultsWaitPage.html'
+    body_text = ''
+    title_text = ''
 
 
 class GoNext(Page):

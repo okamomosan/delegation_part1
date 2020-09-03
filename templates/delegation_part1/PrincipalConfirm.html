@@ -40,9 +40,9 @@
 
                 <span class="var_text">必要なコスト：</span>
                 {% if subsession.cost_blue %}
-                {{ principal_cost_blue }}
+                {{ principal_cost_blue|floatformat }}
                 {% else %}
-                {{ principal_cost_yellow }}
+                {{ principal_cost_yellow|floatformat }}
                 {% endif %} ポイント<br>
                 </p>
             </div>
@@ -63,8 +63,8 @@
                 あなたと相手はともに{{ subsession.when_fail_b }}ポイント<br>
                 <br>
                 ※ 最小要件が{{ group.principal_minimum_requirement }}なので、
-                相手は最低でも{% if subsession.cost_blue %}{{ minimum_cost_blue }}
-                {% else %}{{ minimum_cost_yellow }}{% endif %} のコストを払う
+                相手は最低でも{% if subsession.cost_blue %}{{ minimum_cost_blue|floatformat }}
+                {% else %}{{ minimum_cost_yellow|floatformat }}{% endif %} のコストを払う
                 </p>
             </div>
 

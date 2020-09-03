@@ -34,24 +34,24 @@ class Constants(BaseConstants):
     random.shuffle(is_cost_blue)
 
     # 自分にとって望ましいプロジェクトが成功した時の、各ラウンドの報酬
-    list_principal_when_success_a = [220.1, 280.2, 180.3, 220.4, 260.5, 440.6, 560.7, 360.8, 440.9, 520.0]
-    list_agent_when_success_b = [220.1, 280.2, 180.3, 220.4, 260.5, 440.6, 560.7, 360.8, 440.9, 520.0]
+    list_principal_when_success_a = [220, 280, 180, 220, 260, 440, 560, 360, 440, 520]
+    list_agent_when_success_b = [220, 280, 180, 220, 260, 440, 560, 360, 440, 520]
     random.seed(num)
     random.shuffle(list_principal_when_success_a)
     random.seed(num)
     random.shuffle(list_agent_when_success_b)
 
     # 自分にとって望ましくないプロジェクトが成功した時の、各ラウンドの報酬
-    list_agent_when_success_a = [190.1, 235.2, 140.3, 160.4, 260.5, 380.6, 470.7, 280.8, 320.9, 520.0]
-    list_principal_when_success_b = [190.1, 235.2, 140.3, 160.4, 260.5, 380.6, 470.7, 280.8, 320.9, 520.0]
+    list_agent_when_success_a = [190, 235, 140, 160, 260, 380, 470, 280, 320, 520]
+    list_principal_when_success_b = [190, 235, 140, 160, 260, 380, 470, 280, 320, 520]
     random.seed(num)
     random.shuffle(list_agent_when_success_a)
     random.seed(num)
     random.shuffle(list_principal_when_success_b)
 
     # プロジェクトが失敗した時の、各ラウンドの報酬
-    list_when_fail_a = [100.1, 100.2, 100.3, 100.4, 100.5, 200.6, 200.7, 200.8, 200.9, 200.0]
-    list_when_fail_b = [100.1, 100.2, 100.3, 100.4, 100.5, 200.6, 200.7, 200.8, 200.9, 200.0]
+    list_when_fail_a = [100, 100, 100, 100, 100, 200, 200, 200, 200, 200]
+    list_when_fail_b = [100, 100, 100, 100, 100, 200, 200, 200, 200, 200]
     random.seed(num)
     random.shuffle(list_when_fail_a)
     random.seed(num)
