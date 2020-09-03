@@ -16,7 +16,7 @@
 
 <ul class="flex">
     <li>
-        <div class="var_btn_wo_hover" style="width:410px;">
+        <div class="var_btn_wo_hover" style="height:405px;width:410px;">
             <h5 class="var_headline">相手の選んだ成功確率：{{ group.principal_minimum_requirement_minus1}}以下</h5>
             <hr>
             <div align="left">
@@ -43,13 +43,13 @@
                 {{ principal_cost_blue|floatformat }}
                 {% else %}
                 {{ principal_cost_yellow|floatformat }}
-                {% endif %} ポイント<br>
-                </p>
+                {% endif %} ポイント</>
+                <br>
             </div>
         </div>
     </li>
     <li>
-        <div class="var_btn_wo_hover" style="width:410px;">
+        <div class="var_btn_wo_hover" style="height:405px;width:410px;">
             <h5 class=" var_headline">相手の選んだ成功確率：{{ group.principal_minimum_requirement}}以上</h5>
             <hr>
             <div align="left">
